@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\DMB\OneDrive\Bureau\Cours\GENIE LOGICIEL\PROJET LAVAGE AUTO\.metadata\.plugins\org.eclipse.jdt.core
+760091825.index
+1865797976.index
+2701746494.index
+4191216206.index
+1457985749.index
+1378020951.index
+3884543788.index

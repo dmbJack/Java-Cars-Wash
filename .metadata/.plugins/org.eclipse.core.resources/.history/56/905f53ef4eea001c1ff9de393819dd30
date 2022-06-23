@@ -1,0 +1,131 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+
+public class MyAccount extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField newPwd;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MyAccount frame = new MyAccount();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	private boolean isActiv = false;
+	public MyAccount() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 530, 574);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("NOM ET PRENOM :");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(10, 286, 168, 31);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBackground(new Color(176, 224, 230));
+		textField.setBounds(252, 290, 253, 28);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblMotDePasse = new JLabel("MOT DE PASSE :");
+		lblMotDePasse.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMotDePasse.setBounds(10, 376, 168, 31);
+		contentPane.add(lblMotDePasse);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(176, 224, 230));
+		textField_1.setColumns(10);
+		textField_1.setBounds(252, 379, 253, 28);
+		contentPane.add(textField_1);
+		
+		JLabel lblNomDutilisateur = new JLabel("NOM D'UTILISATEUR :");
+		lblNomDutilisateur.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNomDutilisateur.setBounds(10, 244, 196, 31);
+		contentPane.add(lblNomDutilisateur);
+		
+		textField_2 = new JTextField();
+		textField_2.setEnabled(false);
+		textField_2.setEditable(false);
+		textField_2.setBackground(new Color(176, 224, 230));
+		textField_2.setColumns(10);
+		textField_2.setBounds(252, 244, 253, 28);
+		contentPane.add(textField_2);
+		newPwd = new JTextField();
+		newPwd.setBackground(new Color(176, 224, 230));
+		newPwd.setEditable(false);
+		newPwd.setColumns(10);
+		newPwd.setBounds(252, 418, 253, 28);
+		contentPane.add(newPwd);
+		JLabel lblMotDePasse_1 = new JLabel("NOUVEAU MDP :");
+		lblMotDePasse_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMotDePasse_1.setBounds(10, 421, 168, 31);
+		contentPane.add(lblMotDePasse_1);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("CHANGER DE MOT DE PASSE");
+		chckbxNewCheckBox.setBackground(new Color(255, 99, 71));
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				isActiv = (isActiv) ? false : true;
+				if(isActiv) {
+					newPwd.setEditable(true);
+				}else {
+					newPwd.setEditable(false);
+				}
+				
+			}
+		});
+		chckbxNewCheckBox.setBounds(149, 346, 203, 23);
+		contentPane.add(chckbxNewCheckBox);
+		
+		JButton btnNewButton = new JButton("ENREGISTRER");
+		btnNewButton.setBackground(new Color(60, 179, 113));
+		btnNewButton.setBounds(188, 489, 143, 31);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\DMB\\Downloads\\users.png"));
+		lblNewLabel_1.setBounds(117, 0, 332, 256);
+		contentPane.add(lblNewLabel_1);
+		
+		
+		
+		
+	}
+}

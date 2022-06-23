@@ -1,0 +1,128 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+public class Agents extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Agents frame = new Agents();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Agents() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 545, 556);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("NOM :");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(10, 40, 47, 14);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBackground(new Color(224, 255, 255));
+		textField.setBounds(175, 40, 172, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblPrenom = new JLabel("PRENOM :");
+		lblPrenom.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPrenom.setBounds(10, 71, 67, 14);
+		contentPane.add(lblPrenom);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(224, 255, 255));
+		textField_1.setColumns(10);
+		textField_1.setBounds(175, 71, 172, 20);
+		contentPane.add(textField_1);
+		
+		JLabel lblNomDutilisateur = new JLabel("NOM D'UTILISATEUR :");
+		lblNomDutilisateur.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNomDutilisateur.setBounds(10, 103, 158, 14);
+		contentPane.add(lblNomDutilisateur);
+		
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(224, 255, 255));
+		textField_2.setColumns(10);
+		textField_2.setBounds(175, 102, 172, 20);
+		contentPane.add(textField_2);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBackground(new Color(224, 255, 255));
+		passwordField.setBounds(175, 133, 172, 20);
+		contentPane.add(passwordField);
+		
+		JLabel lblMotDePasse = new JLabel("MOT DE PASSE :");
+		lblMotDePasse.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblMotDePasse.setBounds(10, 136, 158, 14);
+		contentPane.add(lblMotDePasse);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBackground(new Color(224, 255, 255));
+		passwordField_1.setBounds(175, 164, 172, 20);
+		contentPane.add(passwordField_1);
+		
+		JLabel lblConfirmation = new JLabel("CONFIRMATION :");
+		lblConfirmation.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblConfirmation.setBounds(10, 167, 158, 14);
+		contentPane.add(lblConfirmation);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBackground(new Color(135, 206, 250));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\DMB\\Downloads\\images (3).png"));
+		lblNewLabel_1.setBounds(280, -24, 241, 272);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton = new JButton("ENREGISTRER");
+		btnNewButton.setBackground(new Color(135, 206, 235));
+		btnNewButton.setBounds(10, 225, 116, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnModifier = new JButton("MODIFIER");
+		btnModifier.setBackground(new Color(135, 206, 250));
+		btnModifier.setBounds(208, 225, 116, 23);
+		contentPane.add(btnModifier);
+		
+		JButton btnSupprimer = new JButton("SUPPRIMER");
+		btnSupprimer.setBackground(new Color(135, 206, 250));
+		btnSupprimer.setBounds(405, 225, 116, 23);
+		contentPane.add(btnSupprimer);
+	}
+}

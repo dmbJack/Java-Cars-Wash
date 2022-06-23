@@ -1,0 +1,115 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
+import model.User;
+import utils.BaseDeDonnee;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JSeparator;
+import javax.swing.JFormattedTextField;
+
+public class Voirsolde extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Voirsolde frame = new Voirsolde(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Voirsolde(User user) {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 900, 589);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		 try 
+		  {
+		     
+			 Connection connection = (Connection) DriverManager.getConnection(BaseDeDonnee.bdMainConfig,BaseDeDonnee.bdName,BaseDeDonnee.bdPassword);
+		    
+		      String query = "SELECT * FROM prestation";
+		    
+		      Statement stm = connection.createStatement();
+		      ResultSet res = stm.executeQuery(query);
+		      ResultSetMetaData resultMeta = (ResultSetMetaData) res.getMetaData();
+		      int columnLength = 0;
+//		       while(res.next()) {
+//		    	   columnLength +=1;
+//		    	   
+//		       }
+		      String columns[] = { "Vehicule", "Type de lavage", "Date", "Montant" };
+		      String data[][] = new String[100][4];
+		      System.out.println(columnLength);
+		    
+		      int i = 0;
+		      while (res.next()) {
+		    	
+		        String vehicule = res.getString("vehicule");
+		        String typeLavage = res.getString("typeprestation");
+		        Date date = res.getDate("dateprestation", null);
+		        int montant = res.getInt("prixprestation");
+		        data[i][0] = vehicule;
+		        data[i][1] = typeLavage;
+		        data[i][2] = ""+date;
+		        data[i][3] = montant+" CFA";
+		        i++;
+		      }
+		    
+		      DefaultTableModel model = new DefaultTableModel(data, columns);
+		      JTable table = new JTable(model);
+		      table.setShowGrid(true);
+		      table.setShowVerticalLines(true);
+		      JScrollPane pane = new JScrollPane(table);
+		      pane.setBounds(10, 247, 856, 284);
+		      JFrame f = new JFrame("Remplir JTable a partir d'une BDD");
+		      JPanel panel = new JPanel();
+		      panel.setLayout(null);
+		      panel.add(pane);
+		      getContentPane().add(panel);
+		      
+		      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		      this.setVisible(true);
+		    
+		    } catch(SQLException e) {
+		      e.printStackTrace();
+		    }
+	}
+}
